@@ -1,6 +1,5 @@
 from typing import Optional, Dict, List
 from datetime import datetime, timedelta, timezone
-import pytz
 from urllib.parse import unquote
 
 from fastapi import HTTPException, Request, status

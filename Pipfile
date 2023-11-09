@@ -14,11 +14,9 @@ bcrypt = "*"
 email-validator = "*"
 python-dateutil = "*"
 pydantic-settings = "*"
+sqlalchemy = "*"
 
 [dev-packages]
-pylint = "*"
-pytest = "*"
-black = "*"
 
 [requires]
 python_version = "3.9"
