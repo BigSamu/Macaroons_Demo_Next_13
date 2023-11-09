@@ -4,7 +4,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-
 from api.api.v1 import api_router
 from api.core import settings
 
@@ -23,6 +22,10 @@ app = FastAPI(
         "email": "valdesgutierrez@gmail.com",
     },
 )
+
+@app.get("/api/python")
+def hello_world():
+    return {"message": "Hello World"}
 
 # *******************************************************************************
 # DATABASE INITIALISATION
