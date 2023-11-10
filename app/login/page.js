@@ -16,6 +16,7 @@ const checkLoginStatus = async () => {
 
   const options = {
     headers: { Cookie: headers().get("cookie") },
+    serverSide: true,
   };
 
   if (access_token) {
