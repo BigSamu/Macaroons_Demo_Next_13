@@ -1,11 +1,9 @@
 import { baseService } from './base';
-import axios from 'axios';
-import { API_URL } from '../config';
 
-const baseUrl = `${API_URL}/auth`;
+const baseUrl = `/auth`;
 
 const login = async (credentials) => {
-  console.log(baseUrl)
+
   const formData = new FormData();
   formData.append('username', credentials.username);
   formData.append('password', credentials.password);
