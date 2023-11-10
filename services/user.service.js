@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { baseService } from './base';
 
 const baseUrl = '/users';
@@ -13,9 +12,6 @@ const getOneById = async (id, options = {}) => {
 
 const getCurrent = async (options = {}) => {
   const {serverSide} = options;
-  if (serverSide){
-    return await axios.get(`localhost:8000/api/users`, {headers: {...options}})
-  }
   return await baseService(options).get(`${baseUrl}/me`);
 };
 
