@@ -14,7 +14,6 @@ const getOneById = async (id, options = {}) => {
 const getCurrent = async (options = {}) => {
   const {serverSide} = options;
   if (serverSide){
-    baseUrl = 'localhost:8000/api/users'
     return await axios.get(`localhost:8000/api/users`, {headers: {...options}})
   }
   return await baseService(options).get(`${baseUrl}/me`);
