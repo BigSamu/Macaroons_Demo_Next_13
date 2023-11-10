@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     CSRF_SECRET_KEY: str = secrets.token_urlsafe(32)
 
     # DATABASE SETTINGS
-    DATABASE_URL: str = "sqlite:///./macaroons_demo.db"  # Database Location
+    POSTGRES_URL: str # Database Location
 
     class Config:
         env_file = ".env"

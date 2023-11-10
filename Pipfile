@@ -15,6 +15,7 @@ email-validator = "*"
 python-dateutil = "*"
 pydantic-settings = "*"
 sqlalchemy = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
