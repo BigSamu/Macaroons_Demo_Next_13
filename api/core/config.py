@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     POSTGRES_HOST: str # Database Host - Production
     POSTGRES_DATABASE: str # Database Name - Production
 
-    SQLITE_URL: str # Database Location - Development
+    SQLITE_URL: str || None # Database Location - Development
 
     # ENVIRONMENT SETTINGS
     ENVIRONMENT: str = "development"  # Set this in your .env file
