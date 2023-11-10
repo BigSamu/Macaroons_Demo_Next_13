@@ -161,7 +161,9 @@ class OAuth2PasswordBearerWithCookie(OAuth2):
             "access_token"
         )  # changed to accept access token from httpOnly Cookie
 
-        authorization = unquote(authorization)
+        if authorization is not None:
+            authorization = unquote(authorization)
+
         scheme, access_token = get_authorization_scheme_param(authorization)
         shared_token: bool = request.cookies.get("shared_token") == "yes"
 
