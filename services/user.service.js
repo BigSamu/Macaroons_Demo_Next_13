@@ -11,10 +11,10 @@ const getOneById = async (id, options = {}) => {
 };
 
 const getCurrent = async (options = {}) => {
-  // const {serverSide} = options;
-  // if (serverSide){
-  //   baseUrl = 'http//:localhost:8000/api/users'
-  // }
+  const {serverSide} = options;
+  if (serverSide){
+    return await axios.get(`http//:localhost:8000/api/v1/users/me`, { headers: {...options}, withCredentials: true });
+  }
   return await baseService(options).get(`${baseUrl}/me`);
 };
 
