@@ -7,7 +7,6 @@ from api.core.config import settings
 if settings.ENVIRONMENT == "production":
     print("Using Postgres Vercel remote database")
     POSTGRES_URL=f'postgresql://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}@{settings.POSTGRES_HOST}/{settings.POSTGRES_DATABASE}'
-    print(POSTGRES_URL)
     engine = create_engine(POSTGRES_URL)
 else:
     # SQLite configuration for development

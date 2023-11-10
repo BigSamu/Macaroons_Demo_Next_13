@@ -25,6 +25,7 @@ const getData = async (access_token, email) => {
     headers: {
       Cookie: `access_token = Bearer ${access_token}`,
     },
+    serverSide: true,
   };
 
   if (access_token) {
@@ -39,7 +40,7 @@ const getData = async (access_token, email) => {
       }
     }
   }
-  
+
 
   let resourcesSS = await resourceService.getAll(options);
   let accessTokenSS = {

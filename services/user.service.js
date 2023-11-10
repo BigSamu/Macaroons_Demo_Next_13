@@ -12,10 +12,11 @@ const getOneById = async (id, options = {}) => {
 };
 
 const getCurrent = async (options = {}) => {
-  const { serverSide } = options;
+  const { headers, serverSide } = options;
   if (serverSide) {
-    return await axios.get(`http//:localhost:8000/api/v1/users/me`, {
-      headers: { ...options },
+    console.log("Hello")
+    return await axios.get(`http://localhost:8000/api/v1/users/me`, {
+      headers: { ...headers },
       withCredentials: true,
     });
   }

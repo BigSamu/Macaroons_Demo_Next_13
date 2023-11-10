@@ -19,6 +19,7 @@ const getData = async () => {
 
   const options = {
     headers: { Cookie: headers().get("cookie") },
+    serverSide: true,
   };
 
   if (access_token) {
@@ -28,7 +29,7 @@ const getData = async () => {
       console.log(error);
     }
   }
-  
+
   if (!currentUserSS) {
     redirect('/login');
   }
