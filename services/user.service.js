@@ -11,7 +11,10 @@ const getOneById = async (id, options = {}) => {
 };
 
 const getCurrent = async (options = {}) => {
-  const {serverSide} = options;
+  // const {serverSide} = options;
+  // if (serverSide){
+  //   baseUrl = 'http//:localhost:8000/api/users'
+  // }
   return await baseService(options).get(`${baseUrl}/me`);
 };
 

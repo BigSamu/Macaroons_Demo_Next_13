@@ -5,7 +5,7 @@ const nextConfig = {
   },
   rewrites: async () => {
     return {
-      before: [
+      beforeFiles: [
         {
           source: "/api/:path*",
           destination:
