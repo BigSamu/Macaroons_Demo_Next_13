@@ -21,6 +21,8 @@ class Settings(BaseSettings):
 
     # DATABASE SETTINGS
     POSTGRES_URL: str # Database Location
+    SQLITE_URL: str # Database Location
+
 
     class Config:
         env_file = ".env"
