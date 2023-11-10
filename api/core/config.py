@@ -20,12 +20,15 @@ class Settings(BaseSettings):
     CSRF_SECRET_KEY: str = secrets.token_urlsafe(32)
 
     # DATABASE SETTINGS
-    POSTGRES_URL: str # Database Location
-    SQLITE_URL: str # Database Location
+    POSTGRES_USER: str # Database User - Production
+    POSTGRES_PASSWORD: str # Database Password - Production
+    POSTGRES_HOST: str # Database Host - Production
+    POSTGRES_DATABASE: str # Database Name - Production
+
+    SQLITE_URL: str # Database Location - Development
 
     # ENVIRONMENT SETTINGS
     ENVIRONMENT: str = "development"  # Set this in your .env file
-
 
     class Config:
         env_file = ".env"
