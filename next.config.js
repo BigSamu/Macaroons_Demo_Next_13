@@ -4,8 +4,7 @@ const nextConfig = {
     serverActions: true,
   },
   rewrites: async () => {
-    return {
-      beforeFiles: [
+    return [
         {
           source: "/api/:path*",
           destination:
@@ -28,7 +27,6 @@ const nextConfig = {
               : "/api/openapi.json",
         },
       ],
-    };
   },
 };
 
