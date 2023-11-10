@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { CLIENT_URL } from '../../config';
+import { CLIENT_URL } from "../../config";
 
 import {
   Form,
@@ -11,17 +11,17 @@ import {
   Row,
   Col,
   Alert,
-} from 'react-bootstrap';
-import { Link } from 'react-bootstrap-icons';
+} from "react-bootstrap";
+import { Link } from "react-bootstrap-icons";
 
 import {
   copyTextToClipboard,
   formatUrlQueryData,
   parseSharingOptionsIntoACaveatList,
   addFirstPartyCaveatsAndSerialize,
-} from '../../utils';
+} from "../../utils";
 
-import _ from 'lodash';
+import _ from "lodash";
 
 //******************************************************************************
 // MAIN COMPONENT
@@ -37,14 +37,11 @@ const ShareLinkForm = (props) => {
 
   // States
   const [sharingOptions, setSharingOptions] = useState({
-    resources: _.assign(
-      {},
-      ...resources.map((item) => ({ [item.id]: false }))
-    ),
+    resources: _.assign({}, ...resources.map((item) => ({ [item.id]: false }))),
     timeout: 30,
   });
   const [targetUser, setTargetUser] = useState({
-    email: 'johndoe@example.com'
+    email: "johndoe@example.com",
   });
   const [showToast, setShowToast] = useState(false);
 
@@ -83,7 +80,10 @@ const ShareLinkForm = (props) => {
   const handleOnSubmitCreateLink = async (e) => {
     e.preventDefault();
     let caveatsList = parseSharingOptionsIntoACaveatList(sharingOptions);
-    let restrictedMacaroon = addFirstPartyCaveatsAndSerialize(accessToken.value, caveatsList);
+    let restrictedMacaroon = addFirstPartyCaveatsAndSerialize(
+      accessToken.value,
+      caveatsList
+    );
 
     let queryParams = formatUrlQueryData(targetUser);
     let linkToShare = `${CLIENT_URL}/share/${restrictedMacaroon}/?${queryParams}`;
@@ -126,7 +126,7 @@ const ShareLinkForm = (props) => {
                       checked={sharingOptions.resources[item.id]}
                       label={
                         sharingOptions.resources[item.id]
-                          ? 'Share'
+                          ? "Share"
                           : "Don't Share"
                       }
                       onChange={handleOnChangeResourcesSharingOptions}
@@ -189,6 +189,12 @@ const ShareLinkForm = (props) => {
               <Link size={20} />
               <div className="ms-2">Copy Link</div>
             </Button>
+            <Alert variant="warning" className="py-2 my-2 text-center">
+              <small>
+                <strong>Note:</strong> remember to use this link in other
+                browser window in incognito mode to check results.
+              </small>
+            </Alert>
 
             <Toast
               show={showToast}
