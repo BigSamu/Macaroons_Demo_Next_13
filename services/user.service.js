@@ -14,9 +14,10 @@ const getOneById = async (id, options = {}) => {
 const getCurrent = async (options = {}) => {
   const { headers, serverSide } = options;
   if (serverSide) {
-    console.log("Calling service from server side");
+    const baseUrl =
+      process.env.NODE_ENV === "development" ? "http://127.0.0.1:8000" : "api";
     try {
-      let res = await axios.get(`http://127.0.0.1:8000/api/v1/users/me`, {
+      let res = await axios.get(`${baseUrl}/api/v1/users/me`, {
         headers: { ...headers },
         withCredentials: true,
       });
