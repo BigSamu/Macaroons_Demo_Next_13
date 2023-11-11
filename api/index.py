@@ -1,11 +1,13 @@
 import uvicorn
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Response, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from api.api.v1 import api_router
 from api.core import settings
+
+import os
 
 # *******************************************************************************
 # FASTAPI APP SETTINGS
@@ -75,17 +77,18 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
 
 @app.get("/static/images/{file_name}")
-async def serve_image(file_name: str):
+def serve_image(file_name: str):
     # Ensure the file name ends with '.jpg'
     if not file_name.lower().endswith(".jpg"):
         raise HTTPException(status_code=400, detail="Invalid file type")
 
     # Define the directory containing the images
-    image_directory = os.path.join(os.getcwd(), 'static', 'images')
+    image_directory = os.path.join(os.getcwd(), 'api', 'static', 'images')
 
     # Construct the full file path
     file_path = os.path.join(image_directory, file_name)
-
+    print(file_path)
+    print(os.path.isfile(file_path))
     # Check if the file exists
     if not os.path.isfile(file_path):
         raise HTTPException(status_code=404, detail="File not found")

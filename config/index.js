@@ -5,7 +5,7 @@ export const API_URL =
 
 export const STATIC_URL =
   process.env.NODE_ENV === "production"
-    ? "https://macaroons-demo-next-13.vercel.app/static"
+    ? "https://macaroons-demo-next-13.vercel.app/api/static"
     : "http://localhost:8000/static";
 
 export const CLIENT_URL =
