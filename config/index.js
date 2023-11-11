@@ -1,7 +1,7 @@
-export const API_URL =
-  process.env.NODE_ENV === "production"
-    ? "api/v1"
-    : "http://127.0.0.1:8000/api/v1";
+export const API_URL = "api/v1"
+  // process.env.NODE_ENV === "production"
+  //   ? "api/v1"
+  //   : "http://127.0.0.1:8000/api/v1";
 
 export const STATIC_URL =
   process.env.NODE_ENV === "production"
