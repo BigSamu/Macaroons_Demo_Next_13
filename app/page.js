@@ -24,6 +24,7 @@ const getData = async () => {
 
   if (access_token) {
     try {
+      console.log("In landing page!")
       currentUserSS = await userService.getCurrent(options);
     } catch (error) {
       console.log(error);

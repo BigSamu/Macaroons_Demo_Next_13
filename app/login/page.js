@@ -21,6 +21,7 @@ const checkLoginStatus = async () => {
 
   if (access_token) {
     try {
+      console.log("In login page!")
       currentUserSS = await userService.getCurrent(options);
     } catch (error) {
       console.log(error);
