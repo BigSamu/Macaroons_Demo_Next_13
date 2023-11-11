@@ -14,7 +14,7 @@ import { parseCookies } from "../../utils";
 const checkLoginStatus = async () => {
   let currentUserSS = null;
   let { access_token } = parseCookies(headers().get("cookie"));
-  console.log("access_token: ", access_token);
+
   const options = {
     headers: { Cookie: headers().get("cookie") },
     serverSide: true,
@@ -22,7 +22,6 @@ const checkLoginStatus = async () => {
 
   if (access_token) {
     try {
-      console.log("In login page!")
       currentUserSS = await userService.getCurrent(options);
     } catch (error) {
       console.log(error);

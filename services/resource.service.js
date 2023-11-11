@@ -1,7 +1,7 @@
-import { baseService } from './base';
-import axios from 'axios';
+import { baseService } from "./base";
+import axios from "axios";
 
-const baseUrl = '/resources';
+const baseUrl = "/resources";
 
 const getAll = async (options = {}) => {
   const { headers, serverSide } = options;
@@ -17,6 +17,7 @@ const getAll = async (options = {}) => {
       return res.data;
     } catch (error) {
       console.log(error);
+      return;
     }
   }
   return await baseService(options).get(`${baseUrl}`);
