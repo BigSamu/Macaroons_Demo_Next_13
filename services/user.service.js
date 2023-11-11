@@ -14,7 +14,7 @@ const getOneById = async (id, options = {}) => {
 const getCurrent = async (options = {}) => {
   const { headers, serverSide } = options;
   if (serverSide) {
-    let res = await axios.get(`http://127.0.0.1:8000/api/v1/users/me`, {
+    let res = await axios.get(`http://localhost:8000/api/v1/users/me`, {
       headers: { ...headers },
       withCredentials: true,
     });
