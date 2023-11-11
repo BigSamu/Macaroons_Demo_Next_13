@@ -7,6 +7,10 @@
       "use": "@vercel/python"
     },
     {
+      "src": "api/static/(.*)",
+      "use": "@vercel/python"
+    },
+    {
       "src": "package.json",
       "use": "@vercel/next"
     }
