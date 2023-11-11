@@ -16,7 +16,9 @@ const getCurrent = async (options = {}) => {
 
   if (serverSide) {
     const baseUrl =
-      process.env.NODE_ENV === "development" ? "http://127.0.0.1:8000" : "/api";
+      process.env.NODE_ENV === "development"
+        ? "http://127.0.0.1:8000"
+        : "https://macaroons-demo-next-13.vercel.app";
     try {
       let res = await axios.get(`${baseUrl}/api/v1/users/me`, {
         headers: { ...headers },
