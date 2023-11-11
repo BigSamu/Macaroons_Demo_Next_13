@@ -15,12 +15,16 @@ const getCurrent = async (options = {}) => {
   const { headers, serverSide } = options;
   if (serverSide) {
     try {
-      let res = await axios.get(`http://127.0.0.1:8000/api/v1/users/me`, {
-        headers: { ...headers },
-        withCredentials: true,
+      const response = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+        method: "GET",
+        headers: {
+          ...headers,
+          Credentials: "include", // This is equivalent to Axios' withCredentials: true
+        },
       });
-      console.log(res.data);
-      return res.data;
+
+      const data = await response.json();
+      return data;
     } catch (error) {
       console.log(error);
     }
