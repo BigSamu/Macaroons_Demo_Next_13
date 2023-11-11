@@ -15,7 +15,8 @@ const getCurrent = async (options = {}) => {
   const { headers, serverSide } = options;
   if (serverSide) {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+      console.log("Using fetch here!")
+      const response = await fetch("https://127.0.0.1:8000/api/v1/users/me", {
         method: "GET",
         headers: {
           ...headers,
