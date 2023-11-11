@@ -13,23 +13,18 @@ const getOneById = async (id, options = {}) => {
 
 const getCurrent = async (options = {}) => {
   const { headers, serverSide } = options;
-  if (serverSide) {
-    try {
-      console.log("Using fetch here!")
-      const response = await fetch("https://macaroons-demo-next-13.vercel.app/api/v1/users/me", {
-        method: "GET",
-        headers: {
-          ...headers,
-          Credentials: "include", // This is equivalent to Axios' withCredentials: true
-        },
-      });
+  // if (serverSide) {
+  //   try {
+  //     let res = await axios.get(`http://127.0.0.1:8000/api/v1/users/me`, {
+  //       headers: { ...headers },
+  //       withCredentials: true,
+  //     });
 
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  //     return res.data;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   return await baseService(options).get(`${baseUrl}/me`);
 };
 
