@@ -18,7 +18,7 @@ const getCurrent = async (options = {}) => {
     const baseUrl =
       process.env.NODE_ENV === "development" ? "http://127.0.0.1:8000" : "/api";
     try {
-      let res = await axios.get(`${baseUrl}/api/v1/current/me`, {
+      let res = await axios.get(`${baseUrl}/api/v1/users/me`, {
         headers: { ...headers },
         withCredentials: true,
       });

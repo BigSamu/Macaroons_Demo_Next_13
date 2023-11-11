@@ -14,7 +14,6 @@ import { parseCookies } from "../../utils";
 const checkLoginStatus = async () => {
   let currentUserSS = null;
   let { access_token } = parseCookies(headers().get("cookie"));
-
   const options = {
     headers: { Cookie: headers().get("cookie") },
     serverSide: true,
