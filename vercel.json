@@ -7,19 +7,11 @@
       "use": "@vercel/python"
     },
     {
-      "src": "api/static/(.*)",
-      "use": "@vercel/python"
-    },
-    {
       "src": "package.json",
       "use": "@vercel/next"
     }
   ],
   "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "api/static/$1"
-    },
     {
       "src": "/api/(.*)",
       "dest": "api/index.py"

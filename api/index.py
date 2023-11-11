@@ -76,7 +76,7 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 #  Make images folder statically available
 app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
 
-@app.get("/static/images/{file_name}")
+@app.get("api/v1/static/images/{file_name}")
 def serve_image(file_name: str):
     # Ensure the file name ends with '.jpg'
     if not file_name.lower().endswith(".jpg"):
