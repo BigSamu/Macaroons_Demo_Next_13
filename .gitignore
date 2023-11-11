@@ -6,6 +6,10 @@ macaroons_demo.db
 #  environment variables
 .env
 
+# Cache of Pyhton bytecode
+*.pyc
+
+
 # dependencies
 /node_modules
 /.pnp
