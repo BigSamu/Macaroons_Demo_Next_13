@@ -4,7 +4,6 @@ import http from 'http';
 
 const baseService = (options = {}) => {
   const { headers = {}, params = {} } = options;
-
   const baseServiceDefault = axios.create({
     baseURL: `${API_URL}`,
     httpAgent: new http.Agent({ family: 4 }),
