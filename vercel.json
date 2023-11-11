@@ -13,7 +13,7 @@
   ],
   "routes": [
     {
-      "src": "/static/images/(.*)",
+      "src": "/api/static/images/(.*)",
       "dest": "api/static/images/$1"
     },
     {

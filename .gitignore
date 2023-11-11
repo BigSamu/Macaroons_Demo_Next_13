@@ -9,6 +9,9 @@ macaroons_demo.db
 # Cache of Pyhton bytecode
 *.pyc
 
+# Cahe
+__pycache__/
+*.pyc
 
 # dependencies
 /node_modules
