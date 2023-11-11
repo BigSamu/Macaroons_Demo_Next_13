@@ -1,5 +1,6 @@
 import React from "react";
 import { headers } from "next/headers";
+import { redirect } from 'next/navigation'
 
 import LoginPageWrapper from "../../components/PageWrappers/LoginPageWrapper";
 
@@ -13,7 +14,7 @@ import { parseCookies } from "../../utils";
 const checkLoginStatus = async () => {
   let currentUserSS = null;
   let { access_token } = parseCookies(headers().get("cookie"));
-
+  console.log("access_token: ", access_token);
   const options = {
     headers: { Cookie: headers().get("cookie") },
     serverSide: true,
@@ -29,7 +30,7 @@ const checkLoginStatus = async () => {
   }
 
   if (currentUserSS) {
-    return { props: {}, redirect: { destination: "/" } };
+    redirect("/");
   }
 
   return {

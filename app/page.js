@@ -16,7 +16,7 @@ import _ from "lodash";
 const getData = async () => {
   let currentUserSS = null;
   let { access_token } = parseCookies(headers().get("cookie"));
-
+  console.log("access_token: ", access_token);
   const options = {
     headers: { Cookie: headers().get("cookie") },
     serverSide: true,
