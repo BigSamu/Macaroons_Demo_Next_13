@@ -22,18 +22,18 @@ const getData = async () => {
     serverSide: true,
   };
 
-  if (access_token) {
-    try {
-      console.log("In landing page!")
-      currentUserSS = await userService.getCurrent(options);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // if (access_token) {
+  //   try {
+  //     console.log("In landing page!")
+  //     currentUserSS = await userService.getCurrent(options);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
-  if (!currentUserSS) {
-    redirect('/login');
-  }
+  // if (!currentUserSS) {
+  //   redirect('/login');
+  // }
 
   let resourcesSS = await resourceService.getAll(options);
   let accessTokenSS = {
