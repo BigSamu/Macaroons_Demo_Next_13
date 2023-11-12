@@ -7,7 +7,7 @@ import { Row, Col, Button, Alert } from "react-bootstrap";
 import ResourceForm from "../Forms/ResourceForm";
 import TokenDetailsList from "../Lists/TokenDetailsList";
 import ResourceImage from "../Images/ResourceImage";
-import ShareLinkForm from "../Forms/ShareLinkForm";
+import ShareLinkFormModal from "../Modals/ShareLinkFormModal";
 
 import { settingCookiesFromSharedMacaroon } from "../../app/actions";
 import { parseMacaroonToken } from "../../utils";
@@ -32,7 +32,7 @@ const LandingPageWrapper = (props) => {
     shareLink: false,
   });
 
-  
+
   // Effects
   useEffect(() => {
     if(accessToken?.isShared){
@@ -68,8 +68,6 @@ const LandingPageWrapper = (props) => {
           </p>
           <ResourceForm
             resources={resources}
-            currentUser={currentUser}
-            setCurrentResource={setCurrentResource}
             accessShared={accessToken?.isShared}
           />
           <hr />
@@ -93,7 +91,7 @@ const LandingPageWrapper = (props) => {
         Share Resources
       </Button>
 
-      <ShareLinkForm
+      <ShareLinkFormModal
         resources={resources}
         accessToken={accessToken}
         openModal={openModal}

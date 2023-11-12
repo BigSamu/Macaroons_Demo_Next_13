@@ -4,6 +4,8 @@ import { STATIC_URL } from "../../config";
 import { Image } from "react-bootstrap";
 import { Image as ImageIcon } from "react-bootstrap-icons";
 
+import { useResourceContext } from "../../contexts/ResourceContext";
+
 import _ from "lodash";
 
 //******************************************************************************
@@ -15,8 +17,8 @@ const ResourceImage = (props) => {
   // HOOKS & VARIABLES
   // ----------------------------------
 
-  // Props
-  const { currentResource } = props;
+  // Contexts
+  const { currentResource } = useResourceContext();
 
   //------------------------------------------
   // JSX

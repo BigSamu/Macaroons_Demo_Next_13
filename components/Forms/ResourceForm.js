@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Alert, Row, Col } from "react-bootstrap";
 
+import { useResourceContext } from "../../contexts/ResourceContext";
 import { resourceService } from "../../services";
 
 import _ from "lodash";
@@ -15,7 +16,10 @@ const ResourceForm = (props) => {
   // ----------------------------------
 
   // Props
-  const { resources, currentUser, setCurrentResource, accessShared } = props;
+  const { resources, accessShared } = props;
+
+  // Contexts
+  const { setCurrentResource } = useResourceContext();
 
   // States
   const [selectedResource, setSelectedResource] = useState();

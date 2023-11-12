@@ -27,7 +27,7 @@ import _ from "lodash";
 // MAIN COMPONENT
 //******************************************************************************
 
-const ShareLinkForm = (props) => {
+const ShareLinkFormModal = (props) => {
   //-----------------------------------
   // I) HOOKS & VARIABLES
   // ----------------------------------
@@ -214,4 +214,4 @@ const ShareLinkForm = (props) => {
   );
 };
 
-export default ShareLinkForm;
+export default ShareLinkFormModal;

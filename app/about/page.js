@@ -2,10 +2,10 @@ import React from "react";
 import { headers } from "next/headers";
 import { redirect } from 'next/navigation'
 
-import LandingPageWrapper from "../components/PageWrappers/LandingPageWrapper";
+import AboutPageWrapper from "../../components/PageWrappers/AboutPageWrapper";
 
-import { userService, resourceService } from "../services";
-import { parseCookies } from "../utils";
+import { userService } from "../../services";
+import { parseCookies } from "../../utils";
 
 import _ from "lodash";
 
@@ -50,7 +50,7 @@ const getData = async () => {
 // MAIN COMPONENT
 //******************************************************************************
 
-const LandingPage = async (props) => {
+const AboutPage = async (props) => {
   //-----------------------------------
   // HOOKS & VARIABLES
   //-----------------------------------
@@ -64,7 +64,7 @@ const LandingPage = async (props) => {
 
   return (
     <>
-      <LandingPageWrapper
+      <AboutPageWrapper
         currentUserSS={currentUserSS}
         accessTokenSS={accessTokenSS}
       />
@@ -72,4 +72,4 @@ const LandingPage = async (props) => {
   );
 };
 
-export default LandingPage;
+export default AboutPage;

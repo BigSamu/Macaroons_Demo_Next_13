@@ -5,17 +5,18 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Button, Alert, Image } from "react-bootstrap";
 
 import { settingCookiesFromSharedMacaroon } from "../../app/actions";
-import { parseMacaroonToken } from "../../utils";
+
+import MacaroonAttributesModal from "../Modals/MacaroonAttributesModal";
 
 import _ from "lodash";
 
-const LandingPageWrapper = (props) => {
+const AboutPageWrapper = (props) => {
   //-----------------------------------
   // HOOKS & VARIABLES
   //-----------------------------------
 
   // States
-  const {currentUserSS, accessTokenSS } = props;
+  const { currentUserSS, accessTokenSS } = props;
   const [currentUser, setCurrentUser] = useState(currentUserSS);
   const [accessToken, setAccessToken] = useState(accessTokenSS);
 
@@ -23,10 +24,9 @@ const LandingPageWrapper = (props) => {
     shareLink: false,
   });
 
-
   // Effects
   useEffect(() => {
-    if(accessToken?.isShared){
+    if (accessToken?.isShared) {
       settingCookiesFromSharedMacaroon(accessToken?.value);
     }
   }, []);
@@ -48,38 +48,65 @@ const LandingPageWrapper = (props) => {
       <Row className="align-items-strech justify-content-start">
         <Col sm={12} md={6}>
           <Alert variant="warning" className="py-2">
-            <h5 className="fw-bold mb-0">
-              {`What is a Macaroon?`}
-            </h5>
+            <h5 className="fw-bold mb-0">{`What is a Macaroon?`}</h5>
           </Alert>
-          <p className="mb-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nobis impedit quo blanditiis facilis, voluptate officia! Veniam eius dolore ipsum suscipit esse, vel distinctio at ut voluptates deserunt alias odio corporis excepturi? Optio, odit excepturi minus corrupti earum facere quas reiciendis aliquid explicabo libero quisquam eius placeat numquam nam maiores?
+          <p>
+            Macaroon tokens are a type of digital token used for authentication
+            and authorization in computer systems. They represent a significant
+            evolution from traditional access tokens due to their flexibility
+            and fine-grained control. Unlike simple tokens which carry only a
+            static set of permissions, macaroons can have additional
+            restrictions, or "caveats," attached to them. These caveats can
+            specify conditions under which the token is valid, such as time
+            constraints, specific actions permitted, or validation by
+            third-party services.
+          </p>
+          <p>
+            Originating from a <a href="https://storage.googleapis.com/pub-tools-public-publication-data/pdf/41892.pdf">research paper</a> by Google, macaroons are unique in that
+            they enable users to delegate their permissions in a controlled
+            manner. For instance, a user with a macaroon can add caveats to
+            delegate a subset of their permissions to another user, without
+            needing to involve the token issuer. This delegation is secure
+            because each added caveat narrows the scope of the token's use,
+            never expanding it.
+          </p>
+          <p>
+            Furthermore, macaroons are designed to be efficient and secure.
+            Their structure is based on chained HMACs (Hash-based Message
+            Authentication Codes), ensuring integrity and authenticity. Macaroon
+            tokens are particularly useful in distributed systems and scenarios
+            requiring nuanced permission management.
           </p>
 
-          <hr />
+          <Button
+            variant="primary"
+            type="button"
+            className="mx-0 my-1"
+            onClick={handleOnClickOpenShareLinkModal}
+          >
+            What contains a Macaroon Token?
+          </Button>
 
-          <Image
-              size={"auto"}
-              src={"/assets/macaroon_attributes.png"}
-              thumbnail
-            />
+          <MacaroonAttributesModal
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+          />
         </Col>
         <Col sm={12} md={6} className="mt-3 mt-xl-0">
-
+          <h5 className="fw-bold mb-3">
+            Macaroon Attenuation and Descentralized Delegation
+          </h5>
+          <Image
+            size={"auto"}
+            src={
+              "/assets/macaroon_attenuation_and_descentralized_delegation.png"
+            }
+            thumbnail
+          />
         </Col>
       </Row>
-
-      <Button
-        variant="primary"
-        type="button"
-        className="mx-0 my-1"
-        onClick={handleOnClickOpenShareLinkModal}
-      >
-        Share Resources
-      </Button>
-
     </div>
   );
 };
 
-export default LandingPageWrapper;
+export default AboutPageWrapper;

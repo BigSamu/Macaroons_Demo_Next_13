@@ -57,7 +57,7 @@ def create_macaroon_access_token(
 def verify_macaroon_access_token(
     access_token: Dict, credentials_exception: HTTPException
 ) -> str:
-
+  
     # Try to decode macaroon
     try:
         macaroon = Macaroon.deserialize(access_token["value"])

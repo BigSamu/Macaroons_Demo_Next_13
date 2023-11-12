@@ -42,7 +42,6 @@ def get_current_user(
 ) -> models.User:
 
     # Create HTTP Exception for credentilas error
-
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail=f"Could not validate credentials",
@@ -50,7 +49,7 @@ def get_current_user(
     )
 
     user = None
-
+    print(access_token["isShared"])
     # Verify Access Token (Macaroon). If error found in verification,
     # raise credentials exception
 
@@ -58,8 +57,8 @@ def get_current_user(
         user_id = verify_macaroon_access_token(access_token, credentials_exception)
         user = crud.user.get_one(db, user_id)
 
-    if user is None:
-        raise credentials_exception
+        if user is None:
+            raise credentials_exception
 
     # If everything OK, return user object
     return user

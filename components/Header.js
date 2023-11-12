@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 
@@ -18,14 +18,15 @@ const Header = (props) => {
   // Props
   const { user, logout } = useAuthContext();
 
-  // Routers
+  // Routers and Pathnames
+  const router = useRouter();
   const pathname = usePathname();
 
   // Aux Variables
   const inLoginPath = pathname === "/login" ? true : false;
-  const inSharedHomePath =
-    pathname === "/share/[macaroon]" ? true : false;
+  const inSharedHomePath = pathname === "/share/[macaroon]" ? true : false;
   const inHomePath = pathname === "/" ? true : false;
+  const inAboutPath = pathname === "/about" ? true : false;
 
   //------------------------------------------
   // HANDLERS & AUX FUNCTIONS
@@ -33,6 +34,14 @@ const Header = (props) => {
 
   const handleOnClickLogout = (e) => {
     logout();
+  };
+
+  const handleOnClickHome = (e) => {
+    router.push("/");
+  };
+
+  const handleOnClickAbout = (e) => {
+    router.push("/about");
   };
 
   //------------------------------------------
@@ -58,6 +67,16 @@ const Header = (props) => {
           </Link>
           <Nav className="ms-auto">
             {inHomePath && (
+              <Nav.Link active onClick={handleOnClickAbout}>
+                About
+              </Nav.Link>
+            )}
+            {inAboutPath && (
+              <Nav.Link active onClick={handleOnClickHome}>
+                Home
+              </Nav.Link>
+            )}
+            {(inHomePath || inAboutPath) && (
               <Nav.Link active onClick={handleOnClickLogout}>
                 Logout
               </Nav.Link>

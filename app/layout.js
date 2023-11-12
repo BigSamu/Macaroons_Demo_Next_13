@@ -1,8 +1,9 @@
 import { Inter } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Layout from "../components/Layout"; // Adjust the path if necessary
-import { AuthProvider } from "../contexts/AuthContext"; // Adjust the path if necessary
+import Layout from "../components/Layout";
+import { AuthProvider } from "../contexts/AuthContext";
+import { ResourceProvider } from "../contexts/ResourceContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <Layout>{children}</Layout>
+          <ResourceProvider>
+            <Layout>{children}</Layout>
+          </ResourceProvider>
         </AuthProvider>
       </body>
     </html>

@@ -34,7 +34,7 @@ const getData = async (access_token, email) => {
     } catch (error) {
       // If macaroon is an invalid one, then 401 error is returned
       if (error.response.status == 401) {
-        redirect("/share/undefined");
+        redirect("/not-found");
       } else {
         console.log(error);
       }
