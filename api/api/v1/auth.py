@@ -23,7 +23,7 @@ def login(
     form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db),
 ):
-    
+
     user_authenticated = crud.user.authenticate(
         db, email=form_data.username, password=form_data.password
     )
@@ -51,7 +51,6 @@ def login(
         httponly=False,
         samesite="strict",
     )
-
     return user_authenticated
 
 

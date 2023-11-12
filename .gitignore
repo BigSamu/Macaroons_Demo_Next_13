@@ -7,7 +7,8 @@ macaroons_demo.db
 .env
 
 # Cache of Pyhton bytecode
-*.pyc
+**/__pycache__/
+**/*.pyc
 
 # Cahe
 __pycache__/
