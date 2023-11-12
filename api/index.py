@@ -78,7 +78,7 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 # *******************************************************************************
 
 #  Make static images available -> No authentication
-# app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
+app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
 
 #  Make static images available -> Authentication + Serverless Deployment (works for development too)
 @app.get("/static/images/{file_name}")

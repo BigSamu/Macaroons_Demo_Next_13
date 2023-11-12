@@ -32,10 +32,9 @@ const LandingPageWrapper = (props) => {
     shareLink: false,
   });
 
-
   // Effects
   useEffect(() => {
-    if(accessToken?.isShared){
+    if (accessToken?.isShared) {
       settingCookiesFromSharedMacaroon(accessToken?.value);
     }
   }, []);
@@ -73,6 +72,15 @@ const LandingPageWrapper = (props) => {
           <hr />
 
           <ResourceImage currentResource={currentResource} />
+
+          <Button
+            variant="primary"
+            type="button"
+            className="mx-0 mt-2"
+            onClick={handleOnClickOpenShareLinkModal}
+          >
+            Share Resources
+          </Button>
         </Col>
         <Col sm={12} md={6} className="mt-3 mt-xl-0">
           <TokenDetailsList
@@ -81,15 +89,6 @@ const LandingPageWrapper = (props) => {
           />
         </Col>
       </Row>
-
-      <Button
-        variant="primary"
-        type="button"
-        className="mx-0 mt-3 my-md-1"
-        onClick={handleOnClickOpenShareLinkModal}
-      >
-        Share Resources
-      </Button>
 
       <ShareLinkFormModal
         resources={resources}

@@ -62,13 +62,19 @@ const AboutPageWrapper = (props) => {
             third-party services.
           </p>
           <p>
-            Originating from a <a href="https://storage.googleapis.com/pub-tools-public-publication-data/pdf/41892.pdf">research paper</a> by Google, macaroons are unique in that
-            they enable users to delegate their permissions in a controlled
-            manner. For instance, a user with a macaroon can add caveats to
-            delegate a subset of their permissions to another user, without
-            needing to involve the token issuer. This delegation is secure
-            because each added caveat narrows the scope of the token's use,
-            never expanding it.
+            Originating from a{" "}
+            <a
+              href="https://storage.googleapis.com/pub-tools-public-publication-data/pdf/41892.pdf"
+              target="_blank"
+            >
+              research paper
+            </a>{" "}
+            by Google, macaroons are unique in that they enable users to
+            delegate their permissions in a controlled manner. For instance, a
+            user with a macaroon can add caveats to delegate a subset of their
+            permissions to another user, without needing to involve the token
+            issuer. This delegation is secure because each added caveat narrows
+            the scope of the token's use, never expanding it.
           </p>
           <p>
             Furthermore, macaroons are designed to be efficient and secure.

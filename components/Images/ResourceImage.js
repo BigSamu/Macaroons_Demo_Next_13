@@ -39,7 +39,7 @@ const ResourceImage = (props) => {
             />
           ) : (
             <div className="d-flex flex-column justify-content-center align-items-center h-100 my-5">
-              <ImageIcon size={150} color="gray" />
+              <ImageIcon size={"auto"} color="gray" className="w-50"/>
               <p className="fw-bold text-secondary"> Resource Image </p>
             </div>
           )}

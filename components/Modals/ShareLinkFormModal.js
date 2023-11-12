@@ -115,7 +115,7 @@ const ShareLinkFormModal = (props) => {
                   as={Row}
                   className="mb-1 align-items-center"
                 >
-                  <Form.Label column="sm" sm="auto">
+                  <Form.Label column="xs" xs="auto">
                     <span className="fw-bold">{`Resource #${item.id}`}</span>
                   </Form.Label>
                   <Col xs="auto">

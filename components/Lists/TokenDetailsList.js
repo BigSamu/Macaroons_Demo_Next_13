@@ -63,7 +63,7 @@ const TokenDetailsList = (props) => {
         <hr />
         <Figure className="d-flex flex-column align-items-center justify-content-center">
           <Figure.Image
-            width={150} // You can set width directly on Figure.Image
+            width={200} // You can set width directly on Figure.Image
             src={
               !accessToken?.isShared
                 ? "assets/happy_macaroon.jpeg"
