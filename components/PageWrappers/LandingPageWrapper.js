@@ -85,7 +85,7 @@ const LandingPageWrapper = (props) => {
       <Button
         variant="primary"
         type="button"
-        className="mx-0 my-1"
+        className="mx-0 mt-3 my-md-1"
         onClick={handleOnClickOpenShareLinkModal}
       >
         Share Resources
