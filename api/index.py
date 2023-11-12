@@ -1,8 +1,12 @@
 import uvicorn
 
-from fastapi import FastAPI, Response, HTTPException
+from fastapi import FastAPI, Depends, Response, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+
+from sqlalchemy.orm.session import Session
+from api import crud, models, schemas
+from api.api.deps import get_current_user
 
 from api.api.v1 import api_router
 from api.core import settings
@@ -73,11 +77,12 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 # STATIC FOLDER SETTINGS
 # *******************************************************************************
 
-#  Make images folder statically available
-app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
+#  Make static images available -> No authentication
+# app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
 
-@app.get("/api/v1/static/images/{file_name}")
-def serve_image(file_name: str):
+#  Make static images available -> Authentication + Serverless Deployment
+@app.get("/static/images/{file_name}")
+def serve_image(file_name: str, current_user: models.User = Depends(get_current_user)):
     # Ensure the file name ends with '.jpg'
     if not file_name.lower().endswith(".jpg"):
         raise HTTPException(status_code=400, detail="Invalid file type")

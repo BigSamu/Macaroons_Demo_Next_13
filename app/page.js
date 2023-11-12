@@ -16,7 +16,7 @@ import _ from "lodash";
 const getData = async () => {
   let currentUserSS = null;
   let { access_token } = parseCookies(headers().get("cookie"));
-  
+
   const options = {
     headers: { Cookie: headers().get("cookie") },
     serverSide: true,
@@ -24,7 +24,6 @@ const getData = async () => {
 
   if (access_token) {
     try {
-      console.log("In landing page!")
       currentUserSS = await userService.getCurrent(options);
     } catch (error) {
       console.log(error);
