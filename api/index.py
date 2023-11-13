@@ -78,8 +78,8 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 # STATIC FOLDER SETTINGS
 # *******************************************************************************
 
-#  Make static images available -> No authentication
-if settings.ENVIRONMENT === "development"
+#  Make static images available -> No authentication + Local Development
+if settings.ENVIRONMENT == "development"
     app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
 
 #  Make static images available -> Authentication + Serverless Deployment (works for development too)

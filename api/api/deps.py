@@ -49,7 +49,6 @@ def get_current_user(
     )
 
     user = None
-    print(access_token["isShared"])
     # Verify Access Token (Macaroon). If error found in verification,
     # raise credentials exception
 
