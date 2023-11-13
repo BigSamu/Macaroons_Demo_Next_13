@@ -13,7 +13,7 @@ export const API_URL =
 
 export const STATIC_URL =
   process.env.NODE_ENV === "production"
-    ? `${CLIENT_DOMAIN_URL_PRODUCTION}/${API_URL_PREFIX}/static`
+    ? `${CLIENT_DOMAIN_URL_PRODUCTION}/${API_URL_PREFIX}/static` // serverless deployment does redirection to api
     : `${API_DOMAIN_URL_DEVELOPMENT}/${API_URL_PREFIX}/static`;
 
 export const CLIENT_URL =
