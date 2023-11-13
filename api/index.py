@@ -30,10 +30,6 @@ app = FastAPI(
     },
 )
 
-@app.get("/api/python")
-def hello_world():
-    return {"message": "Hello World"}
-
 # *******************************************************************************
 # DATABASE INITIALISATION
 # *******************************************************************************
@@ -79,11 +75,12 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 # *******************************************************************************
 
 #  Make static images available -> No authentication + Local Development
-app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
+# app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
 
 #  Make static images available -> Authentication + Serverless Deployment (works for development too)
 
-@app.get("/api/v1/static/images/{file_name}")
+
+@app.get(f"{settings.API_V1_STR}/static/images/{{file_name}}")
 def serve_image(file_name: str, current_user: models.User = Depends(get_current_user)):
 
     # Ensure the file name ends with '.jpg'
