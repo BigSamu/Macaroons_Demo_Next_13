@@ -79,11 +79,10 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 # *******************************************************************************
 
 #  Make static images available -> No authentication + Local Development
-if settings.ENVIRONMENT == "development":
-    app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
+app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
 
 #  Make static images available -> Authentication + Serverless Deployment (works for development too)
-else:
+if settings.ENVIRONMENT !== "development"
     @app.get("api/v1/static/images/{file_name}")
     def serve_image(file_name: str, current_user: models.User = Depends(get_current_user)):
 
