@@ -19,10 +19,10 @@ const ResourceForm = (props) => {
   const { resources, accessShared } = props;
 
   // Contexts
-  const { setCurrentResource } = useResourceContext();
+  const { currentResource, setCurrentResource } = useResourceContext();
 
   // States
-  const [selectedResource, setSelectedResource] = useState();
+  const [selectedResource, setSelectedResource] = useState(currentResource);
   const [errorMessage, setErrorMessage] = useState();
 
   //------------------------------------------
