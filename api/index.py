@@ -82,29 +82,29 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
 
 #  Make static images available -> Authentication + Serverless Deployment (works for development too)
-if settings.ENVIRONMENT != "development":
-    @app.get("api/v1/static/images/{file_name}")
-    def serve_image(file_name: str, current_user: models.User = Depends(get_current_user)):
 
-        # Ensure the file name ends with '.jpg'
-        if not file_name.lower().endswith(".jpg"):
-            raise HTTPException(status_code=400, detail="Invalid file type")
+@app.get("/api/v1/static/images/{file_name}")
+def serve_image(file_name: str, current_user: models.User = Depends(get_current_user)):
 
-        # Define the directory containing the images
-        image_directory = os.path.join(os.getcwd(), 'api', 'static', 'images')
+    # Ensure the file name ends with '.jpg'
+    if not file_name.lower().endswith(".jpg"):
+        raise HTTPException(status_code=400, detail="Invalid file type")
 
-        # Construct the full file path
-        file_path = os.path.join(image_directory, file_name)
+    # Define the directory containing the images
+    image_directory = os.path.join(os.getcwd(), 'api', 'static', 'images')
 
-        # Check if the file exists
-        print(file_path)
-        print(os.path.isfile(file_path))
-        if not os.path.isfile(file_path):
-            raise HTTPException(status_code=404, detail="File not found")
+    # Construct the full file path
+    file_path = os.path.join(image_directory, file_name)
 
-        # Open and return the file content
-        with open(file_path, 'rb') as file:
-            return Response(content=file.read(), media_type="image/jpg")
+    # Check if the file exists
+    print(file_path)
+    print(os.path.isfile(file_path))
+    if not os.path.isfile(file_path):
+        raise HTTPException(status_code=404, detail="File not found")
+
+    # Open and return the file content
+    with open(file_path, 'rb') as file:
+        return Response(content=file.read(), media_type="image/jpg")
 
 # *******************************************************************************
 # RUN SETTINGS
