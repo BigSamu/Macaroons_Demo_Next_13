@@ -14,7 +14,7 @@ from api.database.session import SessionLocal
 from api import crud, models
 
 oauth2_scheme = OAuth2PasswordBearerWithCookie(
-    tokenUrl=f"{settings.API_V1_STR}/auth/login"
+    tokenUrl=f"{settings.API_URL_PREFIX}/auth/login"
 )
 
 # *******************************************************************************

@@ -19,7 +19,7 @@ const ResourceImage = (props) => {
 
   // Contexts
   const { currentResource } = useResourceContext();
-  console.log(STATIC_URL)
+
   //------------------------------------------
   // JSX
   //------------------------------------------
