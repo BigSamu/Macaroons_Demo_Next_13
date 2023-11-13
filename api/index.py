@@ -81,7 +81,7 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 # app.mount("/static/images", StaticFiles(directory="api/static/images"), name="images")
 
 #  Make static images available -> Authentication + Serverless Deployment (works for development too)
-@app.get("/static/images/{file_name}")
+@app.get("api/v1/static/images/{file_name}")
 def serve_image(file_name: str, current_user: models.User = Depends(get_current_user)):
     print("hello")
     # Ensure the file name ends with '.jpg'
