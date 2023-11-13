@@ -191,8 +191,9 @@ const ShareLinkFormModal = (props) => {
             </Button>
             <Alert variant="warning" className="py-2 my-2 text-center">
               <small>
-                <strong>Note:</strong> remember to use this link in other
-                browser window in incognito mode to check results.
+                <strong>Note:</strong> When testing the link, use a different
+                browser or the same browser in incognito mode to avoid mixing
+                information in cookies of different users.
               </small>
             </Alert>
 
