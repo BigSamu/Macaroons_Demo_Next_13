@@ -29,7 +29,7 @@ const ResourceImage = (props) => {
       <h5 className="mb-3">
         <span className="text-decoration-underline">Resource</span>
       </h5>
-      <div className="mx-3">
+      <div className="mx-0 mx-xl-3">
         <>
           {!_.isEmpty(currentResource) ? (
             <Image
