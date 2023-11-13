@@ -68,7 +68,7 @@ app.add_middleware(
 # ROUTE SETTINGS
 # *******************************************************************************
 
-app.include_router(api_router, prefix=settings.API_URL_PREFIX)
+app.include_router(api_router, prefix=f"/{settings.API_URL_PREFIX}")
 
 # *******************************************************************************
 # STATIC FOLDER SETTINGS
